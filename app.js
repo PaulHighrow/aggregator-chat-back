@@ -9,18 +9,17 @@ const { Server } = require("socket.io");
 
 const app = express();
 
+const router = require("./routes/main");
+const { newMessage } = require("./services/messagesServices");
+const { validateMessage } = require("./schema/messageSchema");
+const addMessage = require("./controllers/addMessage");
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json({
-    message:
-      "Welcome to AP Chat. Here we don't know how to do things, but we do anyway.",
-  });
-});
+app.use("/", router);
 
 const chat = createServer(app);
 const io = new Server(chat, {
@@ -39,6 +38,8 @@ io.on("connection", (socket) => {
 
   socket.on("message", (data) => {
     console.log(data);
+    io.emit('messageResponse', data);
+    router.post('/messages', validateMessage, addMessage);
   });
 
   socket.on("disconnect", () => {
