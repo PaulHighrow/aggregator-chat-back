@@ -29,12 +29,6 @@ const io = new Server(chat, {
   },
 });
 
-io.on("connect", (socket) => {
-  console.log(socket);
-  console.log("chat server up i guess");
-  console.log("also user connected");
-});
-
 io.on("connection", (socket) => {
   console.log("chat server up i guess");
   console.log("also user connected");
