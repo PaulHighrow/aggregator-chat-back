@@ -10,7 +10,7 @@ const { Server } = require("socket.io");
 const app = express();
 
 const router = require("./routes/main");
-const { newMessage } = require("./services/messagesServices");
+// const { newMessage } = require("./services/messagesServices");
 const { validateMessage } = require("./schema/messageSchema");
 const addMessage = require("./controllers/addMessage");
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -29,6 +29,7 @@ const io = new Server(chat, {
 });
 
 io.on("connection", (socket) => {
+  socket.emit("connected", socket.connected, socket.handshake);
   console.log("chat server up i guess");
   console.log("also user connected");
 
@@ -38,8 +39,8 @@ io.on("connection", (socket) => {
 
   socket.on("message", (data) => {
     console.log(data);
-    io.emit('messageResponse', data);
-    router.post('/messages', validateMessage, addMessage);
+    socket.emit("message", data);
+    router.post("messages", validateMessage, addMessage);
   });
 
   socket.on("disconnect", () => {
