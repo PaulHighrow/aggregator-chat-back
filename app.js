@@ -40,7 +40,6 @@ io.on("connection", (socket) => {
   socket.on("message", (data) => {
     console.log(data);
     socket.emit("message", data);
-    router.post("messages", validateMessage, addMessage);
   });
 
   socket.on("disconnect", () => {
