@@ -40,6 +40,9 @@ io.on("connection", (socket) => {
   socket.on("message", (data) => {
     console.log(data);
     socket.emit("message", data);
+    socket.broadcast.emit("message:get", () => {
+      console.log("emitted");
+    });
   });
 
   socket.on("disconnect", () => {

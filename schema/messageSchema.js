@@ -2,8 +2,9 @@ const Joi = require("joi");
 
 const messageSchema = Joi.object({
   text: Joi.string().required(),
-  name: Joi.string().required(),
+  username: Joi.string().required(),
   id: Joi.string().required(),
+  userID: Joi.string().required(),
   socketID: Joi.string().required(),
 });
 
@@ -16,5 +17,5 @@ const validateMessage = ({ body }, res, next) => {
 };
 
 module.exports = {
-    validateMessage,
+  validateMessage,
 };

@@ -6,13 +6,17 @@ const messages = new Schema(
       type: String,
       required: [true, "Message text is required"],
     },
-    name: {
+    username: {
       type: String,
       required: [true, "Username is required"],
     },
     id: {
       type: String,
       required: [true, "Message ID is required"],
+    },
+    userID: {
+      type: String,
+      required: [true, "User ID is required"],
     }, 
     socketID: {
       type: String,
