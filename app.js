@@ -10,9 +10,7 @@ const { Server } = require("socket.io");
 const app = express();
 
 const router = require("./routes/main");
-// const { newMessage } = require("./services/messagesServices");
-const { validateMessage } = require("./schema/messageSchema");
-const addMessage = require("./controllers/addMessage");
+
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
@@ -40,9 +38,7 @@ io.on("connection", (socket) => {
   socket.on("message", (data) => {
     console.log(data);
     socket.emit("message", data);
-    socket.broadcast.emit("message:get", () => {
-      console.log("emitted");
-    });
+    socket.broadcast.emit("message:get", data);
   });
 
   socket.on("disconnect", () => {
