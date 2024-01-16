@@ -28,15 +28,13 @@ const io = new Server(chat, {
 
 io.on("connection", (socket) => {
   socket.emit("connected", socket.connected, socket.handshake);
-  console.log("chat server up i guess");
-  console.log("also user connected");
+  console.log("user connected");
 
   socket.on("connect_error", (err) => {
     console.log(`connect_error due to ${err.message}`);
   });
 
   socket.on("message", (data) => {
-    console.log(data);
     socket.emit("message", data);
     socket.broadcast.emit("message:get", data);
   });

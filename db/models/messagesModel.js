@@ -17,10 +17,14 @@ const messages = new Schema(
     userID: {
       type: String,
       required: [true, "User ID is required"],
-    }, 
+    },
     socketID: {
       type: String,
       required: [true, "Socket ID is required"],
+    },
+    roomLocation: {
+      type: String,
+      required: [true, "Room Location is required"],
     },
   },
   {

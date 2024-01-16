@@ -6,6 +6,7 @@ const messageSchema = Joi.object({
   id: Joi.string().required(),
   userID: Joi.string().required(),
   socketID: Joi.string().required(),
+  roomLocation: Joi.string().required(),
 });
 
 const validateMessage = ({ body }, res, next) => {
