@@ -5,15 +5,20 @@ const messageSchema = Joi.object({
   username: Joi.string().required(),
   id: Joi.string().required(),
   userID: Joi.string().required(),
+  userIP: Joi.string().required(),
   socketID: Joi.string().required(),
   roomLocation: Joi.string().required(),
+  isPinned: Joi.bool().optional(),
 });
 
 const validateMessage = ({ body }, res, next) => {
   const { error } = messageSchema.validate(body);
-
-  if (error) return res.status(error.status).json(error.details[0].message);
-
+  console.log("validating");
+  if (error) {
+    console.log(error);
+    return res.json(error.details[0].message);
+  }
+  console.log("шота не");
   next();
 };
 

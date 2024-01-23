@@ -18,6 +18,10 @@ const messages = new Schema(
       type: String,
       required: [true, "User ID is required"],
     },
+    userIP: {
+      type: String,
+      required: [true, "User IP is required"],
+    },
     socketID: {
       type: String,
       required: [true, "Socket ID is required"],
@@ -25,6 +29,9 @@ const messages = new Schema(
     roomLocation: {
       type: String,
       required: [true, "Room Location is required"],
+    },
+    isPinned: {
+      type: Boolean,
     },
   },
   {
