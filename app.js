@@ -39,6 +39,10 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("message:get", data);
   });
 
+  socket.on("message:pin", (id, data) => {
+    socket.emit("message:pin", id, data);
+  });
+
   socket.on("disconnect", () => {
     console.log("🔥: A user disconnected");
   });
