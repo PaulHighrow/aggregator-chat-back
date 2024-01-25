@@ -41,6 +41,7 @@ io.on("connection", (socket) => {
 
   socket.on("message:pin", (id, data) => {
     socket.emit("message:pin", id, data);
+    socket.broadcast.emit("message:pinned", id, data);
   });
 
   socket.on("disconnect", () => {
