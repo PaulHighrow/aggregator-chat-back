@@ -44,6 +44,11 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("message:pinned", id, data);
   });
 
+  socket.on("message:delete", (id) => {
+    socket.emit("message:delete", id);
+    socket.broadcast.emit("message:deleted");
+  });
+
   socket.on("disconnect", () => {
     console.log("🔥: A user disconnected");
   });
