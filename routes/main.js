@@ -9,6 +9,7 @@ const addUser = require("../controllers/addUser");
 const editUser = require("../controllers/editUser");
 const getUsers = require("../controllers/getUsers");
 const getUser = require("../controllers/getUser");
+const removeMessage = require("../controllers/removeMessage");
 
 const router = express.Router();
 
@@ -17,6 +18,8 @@ router.get("/", wakeUp);
 router.post("/messages", validateMessage, addMessage);
 
 router.patch("/messages/:id", editMessage);
+
+router.delete("/messages/:id", removeMessage);
 
 router.get("/messages", getMessages);
 
