@@ -13,12 +13,10 @@ const messageSchema = Joi.object({
 
 const validateMessage = ({ body }, res, next) => {
   const { error } = messageSchema.validate(body);
-  console.log("validating");
   if (error) {
     console.log(error);
     return res.json(error.details[0].message);
   }
-  console.log("шота не");
   next();
 };
 
