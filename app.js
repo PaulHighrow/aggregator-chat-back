@@ -46,7 +46,7 @@ io.on("connection", (socket) => {
 
   socket.on("message:delete", (id) => {
     socket.emit("message:delete", id);
-    socket.broadcast.emit("message:deleted");
+    socket.broadcast.emit("message:deleted", id);
   });
 
   socket.on("disconnect", () => {
