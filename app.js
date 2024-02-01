@@ -51,6 +51,8 @@ io.on("connection", (socket) => {
 
   socket.on("user:ban", (userID, userIP) => {
     console.log('ban');
+    console.log(userID);
+    console.log(userIP);
     socket.emit("user:ban", userID, userIP);
     socket.broadcast.emit("user:banned", userID, userIP);
   });
