@@ -49,6 +49,12 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("message:deleted", id);
   });
 
+  socket.on("user:ban", (userID, userIP) => {
+    console.log('ban');
+    socket.emit("user:ban", userID, userIP);
+    socket.broadcast.emit("user:banned", userID, userIP);
+  });
+
   socket.on("disconnect", () => {
     console.log("🔥: A user disconnected");
   });
