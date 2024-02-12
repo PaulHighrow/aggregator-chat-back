@@ -3,7 +3,7 @@ const Joi = require("joi");
 const userSchema = Joi.object({
   username: Joi.string().required(),
   userID: Joi.string().required(),
-  userIP: Joi.string().required(),
+  userIP: Joi.string().optional(),
   isAdmin: Joi.bool().optional(),
   isBanned: Joi.bool().optional(),
 });

@@ -20,7 +20,6 @@ const messages = new Schema(
     },
     userIP: {
       type: String,
-      required: [true, "User IP is required"],
     },
     socketID: {
       type: String,

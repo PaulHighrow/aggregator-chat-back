@@ -5,7 +5,7 @@ const messageSchema = Joi.object({
   username: Joi.string().required(),
   id: Joi.string().required(),
   userID: Joi.string().required(),
-  userIP: Joi.string().required(),
+  userIP: Joi.string().optional(),
   socketID: Joi.string().required(),
   roomLocation: Joi.string().required(),
   isPinned: Joi.bool().optional(),

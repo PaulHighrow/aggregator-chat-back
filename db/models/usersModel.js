@@ -12,7 +12,6 @@ const users = new Schema(
     },
     userIP: {
       type: String,
-      required: [true, "User IP is required"],
     },
     isAdmin: {
       type: Boolean,
