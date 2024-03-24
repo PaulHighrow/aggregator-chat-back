@@ -3,6 +3,7 @@ const wakeUp = require("../controllers/wakeUp");
 const addMessage = require("../controllers/addMessage");
 const { validateMessage } = require("../schema/messageSchema");
 const getMessages = require("../controllers/getMessages");
+const getRoomMessages = require("../controllers/getRoomMessages");
 const editMessage = require("../controllers/editMessage");
 const { validateUser } = require("../schema/usersSchema");
 const addUser = require("../controllers/addUser");
@@ -22,6 +23,8 @@ router.patch("/messages/:id", editMessage);
 router.delete("/messages/:id", removeMessage);
 
 router.get("/messages", getMessages);
+
+router.get("/messages/room", getRoomMessages);
 
 router.post("/users", validateUser, addUser);
 
