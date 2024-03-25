@@ -4,7 +4,7 @@ const messageSchema = Joi.object({
   text: Joi.string().required(),
   username: Joi.string().required(),
   id: Joi.string().required(),
-  userID: Joi.string().required(),
+  userID: Joi.string().optional(),
   userIP: Joi.string().optional(),
   socketID: Joi.string().required(),
   roomLocation: Joi.string().required(),

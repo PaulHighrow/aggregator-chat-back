@@ -16,7 +16,6 @@ const messages = new Schema(
     },
     userID: {
       type: String,
-      required: [true, "User ID is required"],
     },
     userIP: {
       type: String,
